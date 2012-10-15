@@ -8,6 +8,7 @@ DataMapper.setup(:default, ENV['DATABASE_URL'])
 
 get '/' do
   @messages = Message.all
+  @addresses = Address.all
   erb :messages
 end
 
@@ -16,10 +17,6 @@ get '/reset' do
   "Messages reset!"
 end
 
-get '/addresses' do
-  @addresses = Address.all
-  erb: messages
-end
 
 post '/' do
   
