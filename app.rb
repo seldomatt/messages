@@ -19,7 +19,7 @@ end
 post '/' do
   
   message_contents = request.POST['message']
-  message_from = request.POST('sender')
+  message_from = request.POST['sender']
   @message_row = Message.new(:body => message_contents, :sender => message_from)
   @message_row.save 
 
