@@ -16,6 +16,11 @@ get '/reset' do
   "Messages reset!"
 end
 
+get '/addresses' do
+  @addresses = Address.all
+  erb: messages
+end
+
 post '/' do
   
   message_contents = request.POST['message']
@@ -24,6 +29,11 @@ post '/' do
   @message_row.save 
 
   "Message posted!"
+
+  sender_name = request.POST['sender']
+  sender_uri = request.POST['senderuri']
+  @address_row = Address.new(:name => sender_name, :uri => sender_uri)
+  @address_row.save
 end
 
 class Message
@@ -34,6 +44,17 @@ class Message
 	property :body, Text # A longer text block
   property :sender, Text #This records who the message was sent from
 	property :created_at, DateTime # Auto assigns data/time
+  
+end
+
+class Address
+
+  include DataMapper::Resource
+
+  property :id, Serial # Auto-increment integer id
+  property :name, Text # A longer text block
+  property :uri, Text #This records who the message was sent from
+  property :created_at, DateTime # Auto assigns data/time
   
 end
 

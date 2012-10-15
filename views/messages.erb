@@ -32,10 +32,17 @@
         <% @messages.each do |m| %>
           <div class="text receive">
             <div class="reflect"></div>
-            <p>MessageL<%= m.body %></p></br>
+            <p>Message: <%= m.body %></p></br>
             <p>From: <%= m.sender %></p>
           </div>
         <% end %>
+        <h2>Addresses</h2>
+        <% @addresses.each do |a| %>
+          <p>Name: <%= a.name %></p></br>
+          <p>Address: <%= a.uri %></p></br>
+        <% end %>
+
+
 
         
       </div>
