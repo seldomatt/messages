@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="iPhone">
+      <div class="conversation">
+        
+        <!--
+        <div class="time">
+          <p>Oct 15, 2012 3:43 PM</p>
+        </div>
+        -->
+        
+        <!--
+        <div class="text sent">
+          <div class="reflect"></div>
+          <p>A message sent.</p>
+        </div>
+        -->
+        
+        <!--
+        <div class="text receive">
+          <div class="reflect"></div>
+          <p>A message received.</p>
+        </div>
+        -->
+        
+        <!-- TODO: Add messages to page -->
+        <h2>Addresses</h2>
+        <% @addresses.each do |a| %>
+          <p>Name: <%= a.name %></p></br>
+          <p>Address: <%= a.uri %></p></br>
+        <% end %>
+      </div>
+    </div>
+  </body>
+</html>

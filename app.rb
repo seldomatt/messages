@@ -8,13 +8,17 @@ DataMapper.setup(:default, ENV['DATABASE_URL'])
 
 get '/' do
   @messages = Message.all
-  @addresses = Address.all
   erb :messages
 end
 
 get '/reset' do
   DataMapper.auto_migrate!
   "Messages reset!"
+end
+
+get '/addresses' do
+  @addresses = Address.all
+  erb :addresses
 end
 
 
@@ -27,9 +31,8 @@ post '/' do
 
   "Message posted!"
 
-  sender_name = request.POST['sender']
   sender_uri = request.POST['senderuri']
-  @address_row = Address.new(:name => sender_name, :uri => sender_uri)
+  @address_row = Address.new(:name => message_from, :uri => sender_uri)
   @address_row.save
 end
 
